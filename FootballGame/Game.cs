@@ -32,7 +32,7 @@ namespace FootballGame
 
             string StartingTeam = PerformCoinToss();
             Console.WriteLine($"\n {StartingTeam} will start the game ");
-            StartSecondHalves(StartingTeam);
+            StartGameHalves(StartingTeam);
 
         }
 
@@ -52,90 +52,80 @@ namespace FootballGame
 
         }
 
-        public void StartSecondHalves(string startingTeam)
+        public void StartGameHalves(string startingTeam)
         {
 
-            if (startingTeam == T1.TeamName)
-            {
-                PlayHalf("First Half", true);
-                PlayHalf("Second Half", false);
-            }
-            else
-            {
-                PlayHalf("First Half", false);
-                PlayHalf("Second Half", true);
-            }
+            bool flag_Team1 = (startingTeam == T1.TeamName);
+
+            PlayHalf("First Half", flag_Team1);
+            PlayHalf("Second Half", !flag_Team1);
         }
 
-        public void PlayHalf(string halfename, bool isTeam1Starting)
+        public void PlayHalf(string halfName, bool Flag_Team1)
         {
+            Console.WriteLine("\n============= " + halfName + " ============ ");
 
-
-            Console.WriteLine($"\n============= {halfename} ============ ");
 
             for (int turn = 1; turn <= 5; turn++)
             {
-                if (isTeam1Starting)
+
+                if (Flag_Team1)
                 {
-                    Turn(T1, T2, turn);
+                    ExecuteTurn(T1, T2, turn);
                 }
                 else
                 {
-                    Turn(T2, T2, turn);
-
+                    ExecuteTurn(T2, T1, turn);
                 }
 
-                isTeam1Starting = !isTeam1Starting;
+
+                Flag_Team1 = !Flag_Team1;
             }
-
-
-
-
         }
 
-        public void Turn(Team attacking, Team defending, int turn)
+        public void ExecuteTurn(Team attacking, Team defending, int turn)
         {
-            Console.WriteLine($"\n=== Turn {turn} ===");
+            Console.WriteLine($"\n============= Turn {turn} ================");
+            Console.WriteLine("Attacking Team: " + attacking.TeamName + " vs Defending Team: " + defending.TeamName);
 
-            Console.WriteLine($"\nAttacking Team: {attacking.TeamName} vs Defending Team: {defending.TeamName}");
+            int attackPower = attacking.Attack();
+            int defensePower = defending.Defense();
 
-            int powerOfAttacking = attacking.Attack();
+            Console.WriteLine($"\n{attacking.TeamName} Attack Power   {attackPower}");
+            Console.WriteLine($"\n{defending.TeamName}   Defense Power:  {defensePower}");
 
-            int powerOfDefending = defending.Defense();
+            int defenseBonus = 15;
 
-            Console.WriteLine($"\n{attacking.TeamName} Attack Power: {powerOfAttacking}");
-
-            Console.WriteLine($"\n{defending.TeamName} Defense Power: {powerOfDefending}");
-
-
-
-
-            int defenseBonus = 5;
-            if (powerOfAttacking > powerOfDefending + defenseBonus)
+            if (attackPower > defensePower + defenseBonus)
             {
 
-                Console.WriteLine(" \n Goal!!!");
-
-                if (attacking == T1)
-                {
-                    T1Score++;
-                }
-                else
-                {
-                    T2Score++;
-                }
+                Console.WriteLine("\nGoal");
+                UpdateScore(attacking);
             }
             else
             {
-
                 Console.WriteLine("\nDefended!");
             }
 
+            DisplayCurrentScore();
+        }
 
-            Console.WriteLine($"\n Score:");
+        public void UpdateScore(Team attacking)
+        {
+            if (attacking == T1)
+            {
+                T1Score++;
+            }
+            else
+            {
+                T2Score++;
+            }
+        }
 
-            Console.WriteLine($"{T1.TeamName}: {T1Score} | {T2.TeamName}: {T2Score}\n");
-
+        public void DisplayCurrentScore()
+        {
+            Console.WriteLine("\nScore:");
+            Console.WriteLine(T1.TeamName + ": " + T1Score + " | " + T2.TeamName + ": " + T2Score);
             Console.WriteLine("================================\n");
         }
 
