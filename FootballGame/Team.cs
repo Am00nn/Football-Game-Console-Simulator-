@@ -101,5 +101,20 @@ namespace FootballGame
 
         }
 
+        public void displayTeam()
+        {
+            Console.WriteLine($"Team {TeamName} :");
+            Console.WriteLine();
+            Console.WriteLine("{0,-5} {1,-25} {2,-15} {3,-10}", "No.", "Player Name", "Position", "Skill Level");
+            Console.WriteLine(new string('-', 65));
+            for (int i = 0; i < players.Length; i++)
+            {
+
+                var player = players[i];
+                Console.WriteLine("{0,-5} {1,-25} {2,-15} {3,-10}", i + 1, player.PlayerName, player.PlayerPosition, player.PlayerPower);
+            }
+        }
+
+
     }
 }  
