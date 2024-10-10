@@ -18,7 +18,7 @@ namespace FootballGame
 
         }
 
-        public void PlayersList()
+        public void PlayersList(bool isTeam1)
 
         {
 
@@ -29,13 +29,24 @@ namespace FootballGame
 
             int x = 0;
 
-            string[] PlayerName = { "Ali", " Ahmead", "Sulaman", "Salim", "Max", "Mahmoud", "Mohammed", "David", "Khaled", "Tareq", "Wael" };
+            string[] Team1_PlayersName = { "Ali", " Ahmead", "Sulaman", "Salim", "Max", "Mahmoud", "Mohammed", "David", "Khaled", "Tareq", "Wael" };
+            string[] team2_PlayersName1 = { "Sami", " Khalil", "Saif", "Asaad", "Hilal", "Ibrahim", "Hisham ", "Talal", "Hossam", "Hammam", "AbdulMalik" };
 
+            string[] selectedPlayerNames;
+
+            if (isTeam1)
+            {
+                selectedPlayerNames = Team1_PlayersName;
+            }
+            else
+            {
+                selectedPlayerNames = team2_PlayersName1;
+            }
             for (int i = 0; i < players.Length; i++)
             {
 
 
-                string playerName = PlayerName[i];
+                string playerName = selectedPlayerNames[i];
                 int power = random.Next(1, 101);
 
                 string position = PlayersPostions[x];
