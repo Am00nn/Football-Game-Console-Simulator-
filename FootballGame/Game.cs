@@ -93,5 +93,58 @@ namespace FootballGame
 
         }
 
+        public void Turn(Team attacking, Team defending, int turn)
+        {
+            Console.WriteLine($"\n--- Turn {turn} ---");
+
+            Console.WriteLine($"Attacking Team: {attacking.TeamName} vs Defending Team: {defending.TeamName}");
+
+            int powerOfAttacking = attacking.Attack();
+
+            int powerOfDefending = defending.Defense();
+
+            Console.WriteLine($"{attacking.TeamName} Attack Power: {powerOfAttacking}");
+
+            Console.WriteLine($"{defending.TeamName} Defense Power: {powerOfDefending}");
+
+
+            int defenseBonus = random.Next(1, 21);
+            Console.WriteLine($"{defending.TeamName} Defense Bonus: {defenseBonus}");
+
+            if (powerOfAttacking > powerOfDefending + defenseBonus)
+            {
+
+                Console.WriteLine(" Goal!!!");
+
+                if (attacking == T1)
+                {
+                    T1Score++;
+                }
+                else
+                {
+                    T2Score++;
+                }
+            }
+            else
+            {
+
+                Console.WriteLine("Defended!");
+            }
+
+
+            Console.WriteLine($"\n Score:");
+
+            Console.WriteLine($"{T1.TeamName}: {T1Score} | {T2.TeamName}: {T2Score}\n");
+
+            Console.WriteLine("----------------------------\n");
+        }
+
+
+
+
     }
+
+
+
+        
  }
