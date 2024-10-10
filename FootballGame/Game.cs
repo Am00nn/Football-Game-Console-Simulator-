@@ -95,7 +95,7 @@ namespace FootballGame
 
         public void Turn(Team attacking, Team defending, int turn)
         {
-            Console.WriteLine($"\n--- Turn {turn} ---");
+            Console.WriteLine($"\n=== Turn {turn} ===");
 
             Console.WriteLine($"Attacking Team: {attacking.TeamName} vs Defending Team: {defending.TeamName}");
 
@@ -108,9 +108,9 @@ namespace FootballGame
             Console.WriteLine($"{defending.TeamName} Defense Power: {powerOfDefending}");
 
 
-            int defenseBonus = random.Next(1, 21);
-            Console.WriteLine($"{defending.TeamName} Defense Bonus: {defenseBonus}");
 
+
+            int defenseBonus = 5;
             if (powerOfAttacking > powerOfDefending + defenseBonus)
             {
 
@@ -136,7 +136,7 @@ namespace FootballGame
 
             Console.WriteLine($"{T1.TeamName}: {T1Score} | {T2.TeamName}: {T2Score}\n");
 
-            Console.WriteLine("----------------------------\n");
+            Console.WriteLine("================================\n");
         }
 
 
