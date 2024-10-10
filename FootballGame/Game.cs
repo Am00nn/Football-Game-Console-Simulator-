@@ -32,7 +32,7 @@ namespace FootballGame
 
             string StartingTeam = PerformCoinToss();
             Console.WriteLine($"\n {StartingTeam} will start the game ");
-            
+            StartSecondHalves(StartingTeam);
 
         }
 
@@ -49,6 +49,47 @@ namespace FootballGame
                 return T2.TeamName;
 
             }
+
+        }
+
+        public void StartSecondHalves(string startingTeam)
+        {
+
+            if (startingTeam == T1.TeamName)
+            {
+                PlayHalf("First Half", true);
+                PlayHalf("Second Half", false);
+            }
+            else
+            {
+                PlayHalf("First Half", false);
+                PlayHalf("Second Half", true);
+            }
+        }
+
+        public void PlayHalf(string halfename, bool isTeam1Starting)
+        {
+
+
+            Console.WriteLine($"/n-----------------{halfename}------------ ");
+
+            for (int turn = 1; turn <= 5; turn++)
+            {
+                if (isTeam1Starting)
+                {
+                    Turn(T1, T2, turn);
+                }
+                else
+                {
+                    Turn(T2, T2, turn);
+
+                }
+
+                isTeam1Starting = !isTeam1Starting;
+            }
+
+
+
 
         }
 
