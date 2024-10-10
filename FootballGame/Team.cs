@@ -17,5 +17,44 @@ namespace FootballGame
             players = new players[11];
 
         }
+
+        public void PlayersList()
+
+        {
+
+            string[] PlayersPostions = { "Forward", "Midfielder", "Defender", "Goalkeeper" };
+
+
+            Random random = new Random();
+
+            int x = 0;
+
+            string[] PlayerName = { "Ali", " Ahmead", "Sulaman", "Salim", "Max", "Mahmoud", "Mohammed", "David", "Khaled", "Tareq", "Wael" };
+
+            for (int i = 0; i < players.Length; i++)
+            {
+
+
+                string playerName = PlayerName[i];
+                int power = random.Next(1, 101);
+
+                string position = PlayersPostions[x];
+
+                x++;
+                if (x >= PlayersPostions.Length)
+                {
+                    x = 0;
+                }
+
+
+
+                players[i] = new players(playerName, position, power);
+
+            }
+
+
+
+
+        }
     }
 }  
