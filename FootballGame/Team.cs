@@ -78,5 +78,28 @@ namespace FootballGame
             return Skilllevels;
 
         }
+
+
+        public int Defense()
+
+        {
+            int Skilllevels = 0;
+            foreach (var player in players)
+            {
+
+
+                if (player.PlayerPosition == "Defender" || player.PlayerPosition == "Goalkeeper")
+                {
+
+                    Skilllevels += player.PlayerPower;
+                }
+
+
+            }
+
+            return Skilllevels;
+
+        }
+
     }
 }  
