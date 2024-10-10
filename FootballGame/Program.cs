@@ -13,7 +13,7 @@
 
             Team team1 = new Team(team1Name);
             Team team2 = new Team(team2Name);
-            // Start the game process here
+            
             Game game = new(team1, team2);
             team1.PlayersList(true);
             team2.PlayersList(false);
@@ -22,6 +22,7 @@
             Console.WriteLine();
             team2.displayTeam();
             game.InitiateGame();
+            game.DisplayFinalScore();
         }
     }
 }
