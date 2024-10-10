@@ -23,5 +23,34 @@ namespace FootballGame
             random = new Random();
 
         }
+
+
+        public void InitiateGame()
+        {
+
+            Console.WriteLine("\n *****Coin toss ******");
+
+            string StartingTeam = PerformCoinToss();
+            Console.WriteLine($"\n {StartingTeam} will start the game ");
+            
+
+        }
+
+        public string PerformCoinToss()
+        {
+            int teamstart = random.Next(0, 2);
+            if (teamstart == 0)
+            {
+                return T1.TeamName;
+
+            }
+            else
+            {
+                return T2.TeamName;
+
+            }
+
+        }
+
     }
  }
