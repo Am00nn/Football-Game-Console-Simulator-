@@ -71,7 +71,7 @@ namespace FootballGame
         {
 
 
-            Console.WriteLine($"/n-----------------{halfename}------------ ");
+            Console.WriteLine($"\n===={halfename}==== ");
 
             for (int turn = 1; turn <= 5; turn++)
             {
@@ -97,15 +97,15 @@ namespace FootballGame
         {
             Console.WriteLine($"\n=== Turn {turn} ===");
 
-            Console.WriteLine($"Attacking Team: {attacking.TeamName} vs Defending Team: {defending.TeamName}");
+            Console.WriteLine($"\nAttacking Team: {attacking.TeamName} vs Defending Team: {defending.TeamName}");
 
             int powerOfAttacking = attacking.Attack();
 
             int powerOfDefending = defending.Defense();
 
-            Console.WriteLine($"{attacking.TeamName} Attack Power: {powerOfAttacking}");
+            Console.WriteLine($"\n{attacking.TeamName} Attack Power: {powerOfAttacking}");
 
-            Console.WriteLine($"{defending.TeamName} Defense Power: {powerOfDefending}");
+            Console.WriteLine($"\n{defending.TeamName} Defense Power: {powerOfDefending}");
 
 
 
@@ -114,7 +114,7 @@ namespace FootballGame
             if (powerOfAttacking > powerOfDefending + defenseBonus)
             {
 
-                Console.WriteLine(" Goal!!!");
+                Console.WriteLine(" \n Goal!!!");
 
                 if (attacking == T1)
                 {
@@ -128,7 +128,7 @@ namespace FootballGame
             else
             {
 
-                Console.WriteLine("Defended!");
+                Console.WriteLine("\nDefended!");
             }
 
 
@@ -139,10 +139,37 @@ namespace FootballGame
             Console.WriteLine("================================\n");
         }
 
+        public void DisplayFinalScore()
+        {
+            Console.WriteLine("\n====== Final Score ======");
+            Console.WriteLine($"{T1.TeamName}: {T1Score} | {T2.TeamName}: {T2Score}");
+
+
+            if (T1Score > T2Score)
+            {
+                Console.WriteLine($"\n {T1.TeamName} wins the game!");
+            }
+            else if (T2Score > T1Score)
+            {
+                Console.WriteLine($"\n {T2.TeamName} wins the game!");
+            }
+            else
+            {
+                Console.WriteLine("\n The game ends in a draw!");
+            }
+
+            Console.WriteLine("==========================\n");
+        }
+
 
 
 
     }
+
+
+
+
+
 
 
 
