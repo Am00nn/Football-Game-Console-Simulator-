@@ -27,8 +27,8 @@ namespace FootballGame
 
         public void InitiateGame()
         {
-
-            Console.WriteLine("\n *****Coin toss ******");
+                       
+            Console.WriteLine("\n============= Coin toss ============");
 
             string StartingTeam = PerformCoinToss();
             Console.WriteLine($"\n {StartingTeam} will start the game ");
@@ -71,7 +71,7 @@ namespace FootballGame
         {
 
 
-            Console.WriteLine($"\n===={halfename}==== ");
+            Console.WriteLine($"\n============= {halfename} ============ ");
 
             for (int turn = 1; turn <= 5; turn++)
             {
