@@ -56,5 +56,27 @@ namespace FootballGame
 
 
         }
+
+
+        public int Attack()
+
+        {
+            int Skilllevels = 0;
+            foreach (var player in players)
+            {
+
+
+                if (player.PlayerPosition == "Forward" || player.PlayerPosition == "Midfielder")
+                {
+
+                    Skilllevels += player.PlayerPower;
+                }
+
+
+            }
+
+            return Skilllevels;
+
+        }
     }
 }  
